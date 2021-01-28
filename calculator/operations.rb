@@ -16,11 +16,13 @@ module Calculator
         notas.delete(nome)
       end     
 
-      # Fazendo média das notas dos alunos que sobraram e retornando valor
+      # Fazendo média das notas dos alunos que sobraram
       media = 0
       notas.each do |nome, nota|
         media += nota/(notas.length)
       end
+      
+      # Retornando valor encontrado
       return media
 
     end
