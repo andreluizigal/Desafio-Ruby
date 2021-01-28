@@ -35,8 +35,25 @@ module Calculator
         puts "Pressione qualquer tecla para continuar"
         STDIN.getch
 
-      when 2
+      when 3
+        system "cls"
+        puts "Operação 3: Filtrar filmes"
+
+        # Entrada dos gêneros
+        puts "Escreva os gêneros que deseja filtrar os filmes (Exemplo - gênero1 gênero2 ...):"
+        genres = gets.chomp.split
+
+        # Entrada do ano
+        puts "Escreva o ano de lançamento filtrar os filmes (Exemplo - 2021):"
+        year = gets.chomp.to_i
+
+        puts "Filmes de #{genres.to_s}, de #{year} até hoje, encontrados:"
         
+        nomes = operations.filter_films(genres, year)
+        operations.filter_films(genres, year).each do |nome|
+          puts nome
+        end
+
         # Voltar ao menu
         puts "Pressione qualquer tecla para continuar"
         STDIN.getch

@@ -33,7 +33,45 @@ module Calculator
   
     def filter_films(genres, year)
       films = get_films
-  
+
+      # Cria um array para guardar os nomes dos filmes filtrados
+      filtro = []
+
+      # Criando um boolean para auxiliar a aprovar os filmes no filtro ou não
+      correto = true
+
+      # Para cada gênero do filtro
+      genres.each do |genero|
+        
+        # Para cada filme
+        films[:movies].each do |filme|
+
+          # Para cada gênero do filme
+          filme[:genres].each do |generof|
+
+            # Verificando se é de um gênero diferente dos do filtro
+            if generof != genero
+              correto = false           # PRECISA AJEITAR
+            end
+          end
+
+          # Verificando se o ano é antes do do filtro
+          if filme[:year].to_i < year
+            correto = false
+          end
+
+          # Adicionando o nome do filme ao array caso esteja nos conformes do filtro
+          if correto
+            filtro.push(filme[:title])
+          end
+
+          # Resetando para analisar o próximo filme
+          correto = true
+        end
+      end
+      
+      # Retornando array com nomes dos filmes filtrados
+      return filtro
     end
     
     private
