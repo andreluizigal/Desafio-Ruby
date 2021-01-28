@@ -7,7 +7,22 @@ module Calculator
     include ExtraOperations
   
     def biased_mean(grades, blacklist)
-    
+      
+      # Transformando grades em hash
+      notas = eval("{#{grades}}")
+      
+      # Deletando nomes da Lista Negra
+      blacklist.each do |nome|
+        notas.delete(nome)
+      end     
+
+      # Fazendo média das notas dos alunos que sobraram e retornando valor
+      media = 0
+      notas.each do |nome, nota|
+        media += nota/(notas.length)
+      end
+      return media
+
     end
   
     def no_integers(numbers)
