@@ -1,6 +1,7 @@
 require_relative '../extra_operations'
 require 'net/http'
 require 'json'
+require 'set'
 
 module Calculator
   class Operations
@@ -34,40 +35,44 @@ module Calculator
     def filter_films(genres, year)
       films = get_films
 
-      # Cria um array para guardar os nomes dos filmes filtrados
+      # Criando um array para guardar os nomes dos filmes filtrados
       filtro = []
 
       # Criando um boolean para auxiliar a aprovar os filmes no filtro ou não
       correto = true
 
-      # Para cada gênero do filtro
+      # Guardando generos do filtro em um subconjunto
+      generos_filtro = Set[]
       genres.each do |genero|
-        
-        # Para cada filme
-        films[:movies].each do |filme|
+        generos_filtro.add(genero)
+      end
 
-          # Para cada gênero do filme
-          filme[:genres].each do |generof|
+      # Para cada filme...
+      films[:movies].each do |filme|
 
-            # Verificando se é de um gênero diferente dos do filtro
-            if generof != genero
-              correto = false           # PRECISA AJEITAR
-            end
-          end
-
-          # Verificando se o ano é antes do do filtro
-          if filme[:year].to_i < year
-            correto = false
-          end
-
-          # Adicionando o nome do filme ao array caso esteja nos conformes do filtro
-          if correto
-            filtro.push(filme[:title])
-          end
-
-          # Resetando para analisar o próximo filme
-          correto = true
+        # Guardando generos do filme em um subconjunto
+        generos_filme = Set[]
+        filme[:genres].each do |generof|
+          generos_filme.add(generof)
         end
+
+        # Verificando se o conjunto dos gêneros do filtro é subconjunto do conjunto dos gêneros do filme
+        unless generos_filtro.subset?(generos_filme)
+          correto = false
+        end
+        
+        # Verificando se o ano é antes do do filtro
+        if filme[:year].to_i < year
+          correto = false
+        end
+
+        # Adicionando o nome do filme ao array caso esteja nos conformes do filtro
+        if correto
+          filtro.push(filme[:title])
+        end
+
+        # Resetando para analisar o próximo filme
+        correto = true
       end
       
       # Retornando array com nomes dos filmes filtrados
