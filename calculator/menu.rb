@@ -27,9 +27,9 @@ module Calculator
         # Entrada da Lista Negra
         puts "\nNome dos alunos na lista negra (Exemplo - nome1 nome2 ...):"
         blacklist = gets.chomp.split
-        
+
         # Mostrando Média Preconceituosa
-        puts "\nMédia Preconceituosa: #{operations.biased_mean(grades, blacklist)}"
+        puts "\nMédia Preconceituosa: #{operations.biased_mean(grades, blacklist).round(2)}"
 
         # Voltar ao menu
         puts "\nPressione qualquer tecla para continuar"
@@ -45,7 +45,7 @@ module Calculator
         numbers = gets.chomp.split
 
         # Mostrando se cada número é divisível por 25 ou não
-        puts "\nResultado: #{operations.no_integers(numbers)}"
+        puts "\nDivisíveis por 25: #{operations.no_integers(numbers)}"
 
         # Voltar ao menu
         puts "\nPressione qualquer tecla para continuar"

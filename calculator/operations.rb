@@ -14,15 +14,15 @@ module Calculator
       
       # Deletando nomes da Lista Negra
       blacklist.each do |nome|
-        notas.delete(:nome)
+        notas.delete(:"#{nome}")
       end  
 
       # Fazendo média das notas dos alunos que sobraram
-      media = 0
+      media = 0.0
       notas.each do |nome, nota|
-        media += nota/(notas.length)
+        media += (nota.to_f/notas.length)
       end
-      
+
       # Retornando valor encontrado
       return media
 
