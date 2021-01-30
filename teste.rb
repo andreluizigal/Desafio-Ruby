@@ -1,7 +1,9 @@
-a = "425"
+notas = {andre: 10, ana: 8, lucas: 6, pedro: 4, lia: 2, joao: 0}
 
-puts a[-1]
+blacklist = ["andre", "ana"]
 
-b = a[-1] + a[-2]
+notas.delete(:blacklist[1])
 
-puts b
+puts notas
+
+puts blacklist

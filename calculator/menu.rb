@@ -6,7 +6,7 @@ module Calculator
     def initialize
       system "cls"
       # Aparecendo texto do Menu
-      puts "-" * 27, "| Bem vindo a calculadora |\n", "-" * 27, "Operações:\n\n1. Média preconceituosa\n2. Calculadora sem números\n3. Filtrar filmes\n4. Operação 4\n5. Sair\n\nSua Opção: "
+      puts "-" * 27, "| Bem vindo a calculadora |\n", "-" * 27, "Operações:\n\n1. Média preconceituosa\n2. Calculadora sem números\n3. Filtrar filmes\n4. Inverter palavras\n5. Sair\n\nSua Opção: "
       
       # Entrada da opção
       opcao = gets.chomp.to_i
@@ -25,14 +25,14 @@ module Calculator
         grades = gets.chomp
 
         # Entrada da Lista Negra
-        puts "Nome dos alunos na lista negra (Exemplo - nome1 nome2 ...):"
+        puts "\nNome dos alunos na lista negra (Exemplo - nome1 nome2 ...):"
         blacklist = gets.chomp.split
         
         # Mostrando Média Preconceituosa
-        puts "Média Preconceituosa: #{operations.biased_mean(grades, blacklist)}"
+        puts "\nMédia Preconceituosa: #{operations.biased_mean(grades, blacklist)}"
 
         # Voltar ao menu
-        puts "Pressione qualquer tecla para continuar"
+        puts "\nPressione qualquer tecla para continuar"
         STDIN.getch
 
       when 2
@@ -45,10 +45,10 @@ module Calculator
         numbers = gets.chomp.split
 
         # Mostrando se cada número é divisível por 25 ou não
-        puts "Resultado: #{operations.no_integers(numbers)}"
+        puts "\nResultado: #{operations.no_integers(numbers)}"
 
         # Voltar ao menu
-        puts "Pressione qualquer tecla para continuar"
+        puts "\nPressione qualquer tecla para continuar"
         STDIN.getch
 
       when 3
@@ -56,26 +56,34 @@ module Calculator
         puts "Operação 3: Filtrar filmes"
 
         # Entrada dos gêneros
-        puts "Escreva os gêneros que deseja filtrar os filmes (Exemplo - gênero1 gênero2 ...):"
+        puts "\nEscreva os gêneros que deseja filtrar os filmes (Exemplo - gênero1 gênero2 ...):"
         genres = gets.chomp.split
 
         # Entrada do ano
-        puts "Escreva o ano de lançamento filtrar os filmes (Exemplo - 2021):"
+        puts "\nEscreva o ano de lançamento filtrar os filmes (Exemplo - 2021):"
         year = gets.chomp.to_i
 
-        puts "Filmes de #{genres.to_s}, de #{year} até hoje, encontrados:"
-        
-        nomes = operations.filter_films(genres, year)
-        operations.filter_films(genres, year).each do |nome|
-          puts nome
-        end
+        # Exibindo resultado
+        puts "\nFilmes de #{genres}, de #{year} até hoje, encontrados:", "\n", operations.filter_films(genres, year)
 
         # Voltar ao menu
-        puts "Pressione qualquer tecla para continuar"
+        puts "\nPressione qualquer tecla para continuar"
         STDIN.getch
 
       when 4
+        system "cls"
+        
+        # Operação que recebe palavras e retorna elas invertidas
+        # Entrada das palavras
+        puts "Escreva palavras para serem invertidas (Exemplo - palavra1 palavra2 ...):"
+        palavras = gets.chomp.split
 
+        # Exibindo resultado
+        puts "\nPalavras invertidas:", operations.inverte(palavras)
+        
+        # Voltar ao menu
+        puts "\nPressione qualquer tecla para continuar"
+        STDIN.getch
 
       when 5
         # Saindo do programa

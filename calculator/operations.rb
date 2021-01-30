@@ -14,8 +14,8 @@ module Calculator
       
       # Deletando nomes da Lista Negra
       blacklist.each do |nome|
-        notas.delete(nome)
-      end     
+        notas.delete(:nome)
+      end  
 
       # Fazendo média das notas dos alunos que sobraram
       media = 0
@@ -76,7 +76,7 @@ module Calculator
       # Criando um boolean para auxiliar a aprovar os filmes no filtro ou não
       correto = true
 
-      # Guardando generos do filtro em um subconjunto
+      # Guardando generos do filtro em um conjunto
       generos_filtro = Set[]
       genres.each do |genero|
         generos_filtro.add(genero)
@@ -85,7 +85,7 @@ module Calculator
       # Para cada filme...
       films[:movies].each do |filme|
 
-        # Guardando generos do filme em um subconjunto
+        # Guardando generos do filme em um conjunto
         generos_filme = Set[]
         filme[:genres].each do |generof|
           generos_filme.add(generof)
@@ -112,6 +112,11 @@ module Calculator
       
       # Retornando array com nomes dos filmes filtrados
       return filtro
+    end
+    
+    def inverte(palavras)
+
+      return contrario(palavras)
     end
     
     private
