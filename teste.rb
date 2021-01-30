@@ -1,15 +1,7 @@
-require 'set'
-filtro = [1]
-filme = [1, 2]
+a = "425"
 
-generos_filme = Set[]
-filme.each do |generof|
-  generos_filme.add(generof)
-end
+puts a[-1]
 
-generos_filtro = Set[]
-filtro.each do |gener|
-  generos_filtro.add(gener)
-end
+b = a[-1] + a[-2]
 
-generos_filtro.subset(generos_filme)?
+puts b

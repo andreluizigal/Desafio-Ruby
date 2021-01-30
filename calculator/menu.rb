@@ -35,6 +35,22 @@ module Calculator
         puts "Pressione qualquer tecla para continuar"
         STDIN.getch
 
+      when 2
+        system "cls"
+        puts "Operação 2: Calcularoda sem números"
+
+        # Entrada dos números
+        puts "\nDigite os números (Exemplo - num1 num2 ...):"
+
+        numbers = gets.chomp.split
+
+        # Mostrando se cada número é divisível por 25 ou não
+        puts "Resultado: #{operations.no_integers(numbers)}"
+
+        # Voltar ao menu
+        puts "Pressione qualquer tecla para continuar"
+        STDIN.getch
+
       when 3
         system "cls"
         puts "Operação 3: Filtrar filmes"
@@ -57,6 +73,9 @@ module Calculator
         # Voltar ao menu
         puts "Pressione qualquer tecla para continuar"
         STDIN.getch
+
+      when 4
+
 
       when 5
         # Saindo do programa

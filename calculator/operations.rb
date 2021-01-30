@@ -29,7 +29,42 @@ module Calculator
     end
   
     def no_integers(numbers)
-  
+
+      # Criando um vetor para armazenar se é divisível ou não
+      divisivel = []
+      
+      # Criando boolean auxiliar a dizer se o número é ou não divisível por 25
+      sim = false
+
+      # Verificando cada número
+      numbers.each do |numero|
+        
+        # Caso o número tenha 2 ou mais algarismos (caso não tenha, automaticamente não é divisível)
+        if numero.length >= 2
+
+          # Guardando em uma unica String os dois últimos algarismos do número
+          ultimos = numero[-2] + numero[-1]
+
+          # Verificando se os dois últimos algarismos são 00 ou 25 ou 50 ou 75 (divisível por 25)
+          if ultimos == "00" || ultimos == "25" || ultimos == "50" || ultimos == "75"
+            sim = true
+          end
+        end
+
+        # Adicionando S caso seja divisível ou N caso não ao vetor
+        if sim
+          divisivel.push("S")
+
+        else
+          divisivel.push("N")
+        end
+
+        # Resetando auxiliar para próximo número
+        sim = false
+      end
+      
+      # Retornando vetor com os resultados
+      return divisivel
     end
   
     def filter_films(genres, year)
