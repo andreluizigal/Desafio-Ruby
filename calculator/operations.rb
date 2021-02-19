@@ -49,6 +49,12 @@ module Calculator
           if ultimos == "00" || ultimos == "25" || ultimos == "50" || ultimos == "75"
             sim = true
           end
+        
+        # Verificando se o número é 0
+        else 
+          if numero[0] == "0"
+            sim = true
+          end
         end
 
         # Adicionando S caso seja divisível ou N caso não ao vetor
